@@ -52,7 +52,7 @@ public class FacultyService {
     }
 
     public Collection<Faculty> findFacultiesByNameOrColor(String searchStr) {
-        logger.debug("Calling method findFacultiesByNameOrColor (searchStr = {})", searchStr);
+          logger.debug("Calling method findFacultiesByNameOrColor (searchStr = {})", searchStr);
         return facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(searchStr, searchStr);
     }
 

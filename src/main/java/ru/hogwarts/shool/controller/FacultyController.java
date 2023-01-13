@@ -54,6 +54,10 @@ public class FacultyController {
     public ResponseEntity<Faculty> editFaculty(@RequestBody Faculty faculty) {
         return ResponseEntity.ok(facultyService.editFaculty(faculty));
     }
+    @GetMapping("/longest-name")
+    public ResponseEntity<String> getFacultiesWithLongestName() {
+        return ResponseEntity.ok(facultyService.getFacultiesWithLongestName());
+    }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Faculty> deleteFaculty(@PathVariable Long id) {

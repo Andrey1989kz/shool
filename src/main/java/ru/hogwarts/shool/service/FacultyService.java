@@ -2,6 +2,7 @@ package ru.hogwarts.shool.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.shool.model.Faculty;
 import ru.hogwarts.shool.model.Student;
@@ -9,13 +10,14 @@ import ru.hogwarts.shool.repository.FacultyRepository;
 import ru.hogwarts.shool.repository.StudentRepository;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 @Service
 public class FacultyService {
 
     private final FacultyRepository facultyRepository;
     private final StudentRepository studentRepository;
-    Logger logger = LoggerFactory.getLogger(FacultyService.class);
+    private final Logger logger = LoggerFactory.getLogger(FacultyService.class);
 
     public FacultyService(FacultyRepository facultyRepository, StudentRepository studentRepository) {
         logger.debug("Calling constructor FacultyService");
@@ -52,7 +54,7 @@ public class FacultyService {
     }
 
     public Collection<Faculty> findFacultiesByNameOrColor(String searchStr) {
-          logger.debug("Calling method findFacultiesByNameOrColor (searchStr = {})", searchStr);
+        logger.debug("Calling method findFacultiesByNameOrColor (searchStr = {})", searchStr);
         return facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(searchStr, searchStr);
     }
 
@@ -63,5 +65,16 @@ public class FacultyService {
             return null;
         }
         return studentRepository.findByFacultyId(faculty.getId());
+    }
+
+    public String getFacultiesWithLongestName() {
+        try {
+            return facultyRepository.findAll().stream()
+                    .max(Comparator.comparingInt(e -> e.getName().length()))
+                    .orElseThrow(ChangeSetPersister.NotFoundException::new)
+                    .getName();
+        } catch (ChangeSetPersister.NotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

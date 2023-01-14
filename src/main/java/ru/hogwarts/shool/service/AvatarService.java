@@ -23,10 +23,11 @@ import java.util.Objects;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
-@Service
+ @Service
 @Transactional
 public class AvatarService {
     @Value("${students.cover.dir.path}")
+    private final int imagesSizeLimit = 300;
     private String imagesDir;
     private final StudentService studentService;
     private final AvatarRepository avatarRepository;
@@ -102,5 +103,6 @@ public class AvatarService {
         }
         return ResponseEntity.ok(avatarCollection);
     }
+
 }
 

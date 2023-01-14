@@ -1,6 +1,6 @@
 package ru.hogwarts.shool.repository;
 
-public interface ListStudents {
+ public interface ListStudents {
     Long getId();
 
     String getName();

@@ -23,7 +23,7 @@ import java.util.Objects;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
-@Service
+ @Service
 @Transactional
 public class AvatarService {
     @Value("${students.cover.dir.path}")

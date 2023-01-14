@@ -2,7 +2,6 @@ package ru.hogwarts.shool.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.shool.model.Faculty;
 import ru.hogwarts.shool.model.Student;
@@ -12,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+ @Service
 public class StudentService {
 
     private final StudentRepository studentRepository;

@@ -9,7 +9,7 @@ import ru.hogwarts.shool.service.FacultyService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("faculty")
+ @RequestMapping("faculty")
 public class FacultyController {
     private final FacultyService facultyService;
 

@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = FacultyController.class)
+ @WebMvcTest(controllers = FacultyController.class)
 public class ApplicationMvcTests {
 
     @Autowired

@@ -12,7 +12,7 @@ import ru.hogwarts.shool.service.AvatarService;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("avatar")
+ @RequestMapping("avatar")
 public class AvatarController {
 
     private final AvatarService avatarService;

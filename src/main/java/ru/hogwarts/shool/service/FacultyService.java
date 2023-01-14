@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Comparator;
 
 @Service
-public class FacultyService {
+ public class FacultyService {
 
     private final FacultyRepository facultyRepository;
     private final StudentRepository studentRepository;
